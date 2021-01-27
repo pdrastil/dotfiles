@@ -1,0 +1,183 @@
+[user]
+	name = Petr Drastil
+	email = petr.drastil@gmail.com
+
+[alias]
+	# Switch branch, creating it if necessary
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+	# Remove branches that have been already merged with master
+	dm = "!f() { git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; }; f"
+
+	# Clone and pull with submodules
+	c = clone --recursive
+	p = pull --recurse-submodules
+
+	# Initialize, add all files and commit
+	this = !git init && git add . && git commit -m 'Initial commit'
+
+	# Add file to .gitignore
+	ignore = "!f() { [[ ! -e .gitignore ]] && touch .gitignore; echo \"\n$1\" >> .gitignore; }; f"
+
+	# Amend last commit
+	amend = commit --amend --reuse-message=HEAD
+
+	# Reset index changes but not a working tree
+	undo = reset --mixed HEAD^
+
+	# Remove old tag and use it for the latest commit
+	retag = "!f() { git tag -d $1 && git push origin :/refs/tags/$1 && git tag $1; }; f"
+
+	# Show current working status using the short format
+	s = status -s
+
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+
+	# List aliases
+	la = "!f() { git config --get-regexp '^alias\\.' | sed -e 's/^alias\\.//'; }; f"
+
+	# List history
+	ls = log --graph --pretty=format:'%C(green)%ad %C(auto)%h %d %s %C(cyan)[%an] %C(green)(%ar)' --decorate --date=short
+
+	# List history with full statistics
+	ll = "!f() { git ls --stat $*; }; f"
+
+	# List history between two revisions
+	lr = "!f() { git ll \"${1:-HEAD}\"^..\"${1:-HEAD}\"; }; f"
+
+	# Show modified files in last commit
+	dl = ! git ll -1
+
+	# Show a diff for last commit
+	dlc = diff --cached HEAD^
+
+	# Show content for revision
+	dr = "!f() { git diff \"${1:-HEAD}\"^..\"${1:-HEAD}\"; }; f"
+
+	# Find branches containing commit SHA
+	fb = "!f() { git branch -a --contains $1; }; f"
+
+	# Find tags containing commit SHA
+	ft = "!f() { git describe --always --contains $1; }; f"
+
+	# Find commit by commit message
+	fm = "!f() { git ls --grep $1; }; f"
+
+	# Find commits by source code change
+	fc = "!f() { git ls -S $1; }; f"
+
+	# Show line counts in repo
+	stat = "!f() { git ls-files | xargs wc -l; }; f"
+
+	# Credit an author on the latest commit
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+
+[core]
+	# Use custom `.gitignore` with MacOS specific files
+	excludefile = ~/.gitignore
+
+	# Prevent pagination when output of git command fits in a single screen.
+	pager = delta
+
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beggining of a line
+	whitespace = trailing-space,space-before-tab,-indent-with-non-tab
+
+# Speed up commands involving untracked files such as `git status`
+	# INFO: https://git-scm.com/docs/git-update-index#_untracked_cache
+	untrackedCache = true
+
+	# Make `git rebase` safer on MacOS
+	# INFO: https://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+	trustctime = false
+
+	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
+	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	precomposeunicode = false
+
+[interactive]
+	# Pipe interactive commands to delta
+	difffilter = delta --color-only
+
+[color]
+	# Use colors in Git commands that are capable of colored output when
+	# outputting to the terminal. (This is the default setting in Git >= 1.8.4.)
+	ui = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
+[commit]
+	# https://help.github.com/articles/signing-commits-using-gpg
+	gpgSign = false
+
+[diff]
+	# Detect copies as well as renames
+	renames = copies
+
+[diff "bin"]
+	# Use `hexdump` to diff bianry files
+	textconv = hexdump -v -c
+
+[help]
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
+
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[push]
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault
+	default = simple
+	# Make `git push` relevant annotated tags when pushing branches out.
+	followTags = true
+
+[rebase]
+	# Create temporary stash before rebase and apply it after it ends
+	autoStash = true
+
+[credential]
+	helper = osxkeychain
+
+# Configure diff pager
+# https://github.com/dandavison/delta
+[delta]
+	features = side-by-side line-numbers decorations
+	whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+
+# Configure LFS extension
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
