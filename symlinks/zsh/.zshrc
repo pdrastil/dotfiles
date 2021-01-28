@@ -54,7 +54,7 @@ else
 fi
 
 # Extend PATH.
-path=(~/bin $path)
+path=(~/bin /usr/local/sbin $path)
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
