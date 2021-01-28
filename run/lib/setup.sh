@@ -30,3 +30,7 @@ success() {
 title() {
   echo "${CYAN}==>${RESET} ${BOLD}${*}${RESET}"
 }
+
+package() {
+  echo "${YELLOW}==>${RESET} ${*}"
+}
