@@ -34,3 +34,11 @@ title() {
 package() {
   echo "${YELLOW}==>${RESET} ${*}"
 }
+
+download() {
+  if command -v curl >/dev/null 2>&1; then
+    curl -fsSL "${1}"
+  else
+    wget -O- "${1}"
+  fi
+}

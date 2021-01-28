@@ -1,6 +1,10 @@
+# Brewfile lock
+Brewfile.lock.json
+
 # Keep backup folder
 bak/*
 !bak/.gitkeep
 
-# Brewfile lock
-Brewfile.lock.json
+# Keep downloaded completions
+completions/*
+!completions/.gitkeep
