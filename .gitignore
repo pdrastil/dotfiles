@@ -1,3 +1,6 @@
 # Keep backup folder
 bak/*
 !bak/.gitkeep
+
+# Brewfile lock
+Brewfile.lock.json

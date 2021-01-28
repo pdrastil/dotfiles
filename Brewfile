@@ -4,6 +4,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-drivers"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "zero-sh/tap"
@@ -13,6 +14,11 @@ tap "zero-sh/tap"
 #===================================================
 brew "cask"                 # Emacs dependency management
 brew "mas"                  # Mac App Store command-line interface
+
+#===================================================
+# Drivers
+#===================================================
+cask "logitech-options"     # Software for Logitech devices
 
 #===================================================
 # Shells
