@@ -31,7 +31,7 @@ title() {
   echo "${CYAN}==>${RESET} ${BOLD}${*}${RESET}"
 }
 
-package() {
+subtitle() {
   echo "${YELLOW}==>${RESET} ${*}"
 }
 
@@ -41,4 +41,27 @@ download() {
   else
     wget -O- "${1}"
   fi
+}
+
+ask() {
+  msg=$1
+  default=${2:-"Y"}
+
+  if [ "$default" = "Y" ]; then
+    prompt="${GREEN}y${RESET}/N"
+  else
+    prompt="y/${GREEN}N${RESET}"
+  fi
+
+  while true; do
+    printf "${msg} [${prompt}]: " && read -r answer
+    if [ -z "$answer" ]; then
+      answer="$default"
+    fi
+
+    case $answer in
+      [Yy]*) return 0 ;;
+      [Nn]*) return 1 ;;
+    esac
+  done
 }
