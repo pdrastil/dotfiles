@@ -28,3 +28,11 @@ com.apple.dock:
 com.apple.systemuiserver:
   # Sound > Sound Effects > Show volume in menu bar
   "NSStatusItem Visible com.apple.menuextra.volume": 1
+
+com.googlecode.iterm2:
+  # iTerm2 > Preferences > General > Preferences > Load preferences from custom folder
+  PrefsCustomFolder: ~/.iterm2
+  # iTerm2 > Preferences > General > Preferences > Load preferences from custom folder
+  LoadPrefsFromCustomFolder: 1
+  # iTerm2 > Preferences > General > Preferences > Save changes to folder when iTerm2 quits
+  NoSyncNeverRemindPrefsChangesLostForFile: 1
