@@ -2,8 +2,8 @@
 Brewfile.lock.json
 
 # Keep backup folder
-bak/*
-!bak/.gitkeep
+backup/*
+!backup/.gitkeep
 
 # Keep downloaded completions
 completions/*

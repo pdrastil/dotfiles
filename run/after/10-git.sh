@@ -1,9 +1,14 @@
 #!/bin/sh
 source ../lib/setup.sh
+set -o errexit -o nounset
 
 title "Git configuration"
 if [ ! -f "$HOME/.gitconfig" ]; then
   cp "$DOTFILES_ASSETS/git/.gitconfig" "$HOME/.gitconfig"
+fi
+
+if [ ! -f "$HOME/.gitignore" ]; then
+  cp "$DOTFILES_ASSETS/git/.gitignore" "$HOME/.gitignore"
 fi
 
 title "Git username"

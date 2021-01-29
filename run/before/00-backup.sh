@@ -14,7 +14,7 @@ packages=$(find "$DOTFILES/symlinks" -mindepth 2 -maxdepth 3)
 for file in $packages; do
   filename=$(basename "$file")
   if test_link "$HOME/$filename"; then
-    info "Moved $HOME/$filename => $DOTFILES/bak/$filename"
-    mv "$HOME/$filename" "$DOTFILES/bak/$filename"
+    info "Moved $HOME/$filename => $DOTFILES_BACKUP/$filename"
+    mv "$HOME/$filename" "$DOTFILES_BACKUP/$filename"
   fi
 done

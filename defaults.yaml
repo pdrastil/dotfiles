@@ -9,19 +9,19 @@ NSGlobalDomain:
   com.apple.swipescrolldirection: 0
 
 com.apple.dock:
-  # System Preferences > Screen & Screensaver > Screensaver > Hot corners > Bottom-left > Launchpad
+  # System Preferences > Mission Control > Hot corners > Bottom-left > Launchpad
   wvous-bl-corner: 11
   wvous-bl-modifier: 0
 
-  # System Preferences > Screen & Screensaver > Screensaver > Hot corners > Bottom-right > Desktop
+  # System Preferences > Mission Control > Hot corners > Bottom-right > Desktop
   wvous-br-corner: 4
   wvous-br-modifier: 0
 
-  # System Preferences > Screen & Screensaver > Screensaver > Hot corners > Top-left > Launch screen-saver
+  # System Preferences > Mission Control> Hot corners > Top-left > Launch screen-saver
   wvous-tl-corner: 5
   wvous-tl-modifier: 0
 
-  # System Preferences > Screen & Screensaver > Screensaver > Hot corners > Top-right > Mission control
+  # System Preferences > Mission Control > Hot corners > Top-right > Mission control
   wvous-tr-corner: 2
   wvous-tr-modifier: 0
 
