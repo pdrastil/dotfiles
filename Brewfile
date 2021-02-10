@@ -100,6 +100,7 @@ cask "cheatsheet"           # Tool to list all application shortcuts
 cask "cleanmymac"           # Tool to remove unnecessary garbage from macOS
 cask "forklift"             # Finder replacement and FTP/S, WebDAV and AWS S3 client
 cask "gitkraken"            # UI Git client focusing on productivity
+cask "glance"               # Utility that provides quick look previews for files
 cask "google-chrome"        # Web browser from Google
 cask "iterm2"               # Better terminal emulator
 cask "macfuse"              # Integration with additional file systems
