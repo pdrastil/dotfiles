@@ -1,34 +1,75 @@
+###############################################################################
+# System Preferences                                                          #
+###############################################################################
 NSGlobalDomain:
-  # System Preferences > Keyboard > Key repeat
+  # General > Apperance > Auto
+  AppleInterfaceStyleSwitchesAutomatically: 1
+  # General > Sidebar icon size > Medium
+  NSTableViewDefaultSizeMode: 2
+  # General > Show scroll bars > Always
+  AppleShowScrollBars: Always
+  # Keyboard > Key repeat
   KeyRepeat: 2
-
-  # System Preferences > Keyboard > Delay Until Repeat
+  # Keyboard > Delay Until Repeat
   InitialKeyRepeat: 15
-
-  # System Preferences > Trackpad > Scroll direction > Disable
+  # Keyboard > Shortcuts > Use keyboard navigation to move focus between controls
+  AppleKeyboardUIMode: 2
+  # Trackpad > Scroll direction > Disable
   com.apple.swipescrolldirection: 0
 
+###############################################################################
+# Dock and menu bar items                                                     #
+###############################################################################
 com.apple.dock:
   # System Preferences > Mission Control > Hot corners > Bottom-left > Launchpad
   wvous-bl-corner: 11
   wvous-bl-modifier: 0
-
   # System Preferences > Mission Control > Hot corners > Bottom-right > Desktop
   wvous-br-corner: 4
   wvous-br-modifier: 0
-
   # System Preferences > Mission Control> Hot corners > Top-left > Launch screen-saver
   wvous-tl-corner: 5
   wvous-tl-modifier: 0
-
   # System Preferences > Mission Control > Hot corners > Top-right > Mission control
   wvous-tr-corner: 2
   wvous-tr-modifier: 0
 
+com.apple.TextInputMenu:
+  # System Preferences > Keyboard > Input > Show input menu in menu bar
+  visible: 1
+
 com.apple.systemuiserver:
-  # Sound > Sound Effects > Show volume in menu bar
+  # System Preferences > Sound > Sound Effects > Show volume in menu bar
   "NSStatusItem Visible com.apple.menuextra.volume": 1
 
+###############################################################################
+# Finder.app                                                                  #
+###############################################################################
+com.apple.finder:
+  # FInder > Preferences > General > New Finder windows show > Home
+  NewWindowTarget: PfHm
+  NewWindowTargetPath: "file://${HOME}"
+  # Finder > View > Show view options > Group By > None
+  FXPreferredGroupBy: None
+  # Finder > View > Show view options > Sort By > Name
+  FXArrangeGroupViewBy: Name
+
+###############################################################################
+# Forklift.app                                                                #
+###############################################################################
+com.binarynights.ForkLift-3:
+  # Forklift > Preferences > Enable dark mode
+  DarkMode: 1
+  # Forklift > Preferences > Enable ForkLift Mini in the menu bar
+  ForkLiftMiniEnabled: 1
+  # Forklift > Preferences > Treat archives as folders
+  TreatArchivesAsFolders: 1
+  # Forklift > Preferences > Terminal Application > iTerm
+  TerminalApplication: 1
+
+###############################################################################
+# iTerm2.app                                                                  #
+###############################################################################
 com.googlecode.iterm2:
   # iTerm2 > Preferences > General > Preferences > Load preferences from custom folder
   PrefsCustomFolder: ~/.iterm2
