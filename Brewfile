@@ -10,10 +10,12 @@ tap "homebrew/core"
 tap "zero-sh/tap"
 
 #===================================================
-# Homebrew
+# Apple Store
 #===================================================
-brew "cask"                 # Emacs dependency management
 brew "mas"                  # Mac App Store command-line interface
+mas "Magnet", id: 441258766
+mas "The Unarchiver", id: 425424353
+mas "Slack", id: 803453959
 
 #===================================================
 # Drivers
@@ -106,10 +108,3 @@ cask "iterm2"               # Better terminal emulator
 cask "macfuse"              # Integration with additional file systems
 cask "visual-studio-code"   # Open-source Code editor
 cask "zoom"                 # Video communication and virtual meeting platform
-
-#===================================================
-# Apple Store
-#===================================================
-mas "Magnet", id: 441258766
-mas "The Unarchiver", id: 425424353
-mas "Slack", id: 803453959
