@@ -9,12 +9,6 @@ https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_
 EOF
 )
 
-title "Default system shell"
-# Set ZSH as default user shell for older macOS
-if [ "$SHELL" = '/bin/bash' ]; then
-  chsh -s /bin/zsh
-fi
-
 # Use latest version of ZSH from Homebrew
 title "Default user shell"
 if ! dscl . read "/Users/$USER" UserShell | grep -q '/usr/local/bin/zsh'; then
@@ -27,10 +21,3 @@ echo "$COMPLETION_URLS" | while read -r url; do
   subtitle "Downloading completion '$filename'..."
   download "$url" > "$DOTFILES_COMPLETIONS/$filename"
 done
-
-# Install https://github.com/romkatv/zsh4humans
-title "Zsh for humans"
-if [ ! -d "$HOME/.cache/zsh4humans" ]; then
-  subtitle "Installing Zsh for humans..."
-  sh -c "$(download https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
-fi
