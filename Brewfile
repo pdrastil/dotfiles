@@ -42,6 +42,7 @@ brew "fd"                   # Simple, fast and user-friendly alternative to find
 brew "ripgrep"              # Search tool like grep and The Silver Searcher
 brew "jq"                   # Lightweight and flexible command-line JSON processor
 brew "rsync"                # Utility that provides fast incremental file transfer
+brew "dog"                  # Command-line DNS clinent
 brew "httpie"               # User-friendly cURL for API era
 brew "wget"                 # Internet file retriever
 
