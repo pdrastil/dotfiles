@@ -90,7 +90,7 @@
 	# [default] space-before-tab: looks for spaces before tabs at the beggining of a line
 	whitespace = trailing-space,space-before-tab,-indent-with-non-tab
 
-# Speed up commands involving untracked files such as `git status`
+	# Speed up commands involving untracked files such as `git status`
 	# INFO: https://git-scm.com/docs/git-update-index#_untracked_cache
 	untrackedCache = true
 
@@ -159,6 +159,14 @@
 	default = simple
 	# Make `git push` relevant annotated tags when pushing branches out.
 	followTags = true
+
+[fetch]
+	# Run `git remote prune` during the fetch
+	prune = true
+
+[pull]
+	# Rebase local changes when doing pull from remote
+	rebase = true
 
 [rebase]
 	# Create temporary stash before rebase and apply it after it ends
