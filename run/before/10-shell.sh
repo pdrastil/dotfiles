@@ -1,6 +1,6 @@
 #!/bin/sh
-source ../lib/setup.sh
 set -o errexit -o nounset
+source ../lib/setup.sh
 
 # Extra shell completions
 readonly COMPLETION_URLS=$(cat << EOF

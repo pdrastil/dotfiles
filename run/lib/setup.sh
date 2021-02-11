@@ -1,4 +1,5 @@
 #!/bin/sh
+set -o errexit -o nounset
 
 export readonly DOTFILES=${1:-"${HOME}/.dotfiles"}
 export readonly DOTFILES_ASSETS="$DOTFILES/assets"
@@ -13,7 +14,7 @@ readonly RED="\033[0;91m"
 readonly YELLOW="\033[0;93m"
 readonly GREEN="\033[0;92m"
 
-# Messages
+# Prompt functions
 info() {
   echo "${CYAN}${*}${RESET}"
 }
