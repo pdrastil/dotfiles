@@ -1,10 +1,10 @@
-# Brewfile lock
+# macOS
+.DS_Store
+
+# Homebrew
 Brewfile.lock.json
 
-# Keep backup folder
+# Ignored folders for additonal content
 backup/*
-!backup/.gitkeep
-
-# Keep downloaded completions
 completions/*
-!completions/.gitkeep
+!**/.gitkeep

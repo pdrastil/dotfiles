@@ -38,10 +38,6 @@ com.apple.TextInputMenu:
   # System Preferences > Keyboard > Input > Show input menu in menu bar
   visible: 1
 
-com.apple.systemuiserver:
-  # System Preferences > Sound > Sound Effects > Show volume in menu bar
-  "NSStatusItem Visible com.apple.menuextra.volume": 1
-
 ###############################################################################
 # Finder.app                                                                  #
 ###############################################################################
