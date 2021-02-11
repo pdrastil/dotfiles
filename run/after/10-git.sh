@@ -12,14 +12,14 @@ if [ ! -f "$HOME/.gitignore" ]; then
 fi
 
 title "Git username"
-username=$(git config --get user.name)
+username=$(git config --get user.name || true)
 if [ -z "$username" ] || ask "${YELLOW}Change Git username?${RESET} (${BOLD}$username${RESET})" N; then
   printf "Git username: " && read -r username
   git config --global user.name "$username"
 fi
 
 title "Git e-mail"
-email=$(git config --get user.email)
+email=$(git config --get user.email || true)
 if [ -z "$email" ] || ask "${YELLOW}Change Git email?${RESET} (${BOLD}$email${RESET})" N; then
   printf "Git email: " && read -r email
   git config --global user.email "$email"
@@ -28,10 +28,10 @@ fi
 # https://gist.github.com/bcomnes/647477a3a143774069755d672cb395ca
 # https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
 title "Git commit signing"
-signing_key=$(git config --get user.signingKey)
+signing_key=$(git config --get user.signingKey || true)
 if [ -z "$signing_key" ] && ask "${YELLOW}Enable GPG signature?${RESET}" Y; then
   subtitle "Getting GPG key..."
-  gpg_key=$(gpg --list-secret-keys --with-colons "$email" 2>/dev/mull | awk -F: '$1 == "sec" { print $5 }')
+  gpg_key=$(gpg --list-secret-keys --with-colons "$email" 2>/dev/null | awk -F: '$1 == "sec" { print $5 }')
   if [ -z "$gpg_key" ]; then
     stty -echo
     printf "New GPG password: " && read -r password
@@ -63,7 +63,7 @@ EOF
   echo
 
   subtitle "Persisting GPG configuration..."
-  public_key=$(gppg --list-keys --with-colons "$email" | awk -F: '$1 == "fpr" { print $10 }' | head -n 1)
+  public_key=$(gpg --list-keys --with-colons "$email" | awk -F: '$1 == "fpr" { print $10 }' | head -n 1)
   git config --global user.signingKey "$public_key"
   git config --global commit.gpgSign true
   git config --global tag.forceSignAnnotated true
