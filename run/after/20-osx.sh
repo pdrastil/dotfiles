@@ -8,6 +8,12 @@ defaults -currentHost write com.apple.screensaver idleTime 600
 # Set screensaver to Drift
 defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Drift path /System/Library/Screen\ Savers/Drift.saver type 0
 
+# Use latest version of ZSH from Homebrew
+title "Shell"
+if ! dscl . read "/Users/$USER" UserShell | grep -q '/usr/local/bin/zsh'; then
+  sudo dscl . -create "/Users/$USER" UserShell /usr/local/bin/zsh
+fi
+
 title "Dock items"
 dockutil --remove all --no-restart
 dockutil --add "/Applications/ForkLift.app" --no-restart

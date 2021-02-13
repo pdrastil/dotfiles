@@ -5,6 +5,6 @@
 Brewfile.lock.json
 
 # Ignored folders for additonal content
+assets/zsh/*
 backup/*
-completions/*
 !**/.gitkeep
