@@ -18,8 +18,10 @@ mas "The Unarchiver", id: 425424353
 mas "Slack", id: 803453959
 
 #===================================================
-# Drivers
+# OSX utilities & drivers
 #===================================================
+brew "dockutil"             # Tool for managing dock items
+cask "font-fira-code"       # Fira Code font
 cask "logitech-options"     # Software for Logitech devices
 
 #===================================================
