@@ -48,6 +48,7 @@ brew "exa"                  # Modern replacement for 'ls'
 brew "fd"                   # Simple, fast and user-friendly alternative to find
 brew "ripgrep"              # Search tool like grep and The Silver Searcher
 brew "jq"                   # Lightweight and flexible command-line JSON processor
+brew "yq"                   # Process YAML documents from the CLI
 brew "rsync"                # Utility that provides fast incremental file transfer
 brew "dog"                  # Command-line DNS clinent
 brew "httpie"               # User-friendly cURL for API era
@@ -69,6 +70,7 @@ brew "jenv"                 # Java version management
 brew "pyenv"                # Python version management
 brew "pyenv-virtualenv"     # Pyenv plugin to manage virtualenv
 brew "shellcheck"           # Static analysis and lint tool, for (ba)sh scripts
+brew "yamllint"             # Linter for YAML files
 
 #===================================================
 # Virtualization
@@ -88,10 +90,13 @@ cask "aws-vault"            # Amazon AWS IAM password manager
 #===================================================
 # Kubernetes
 #===================================================
-brew "minikube"             # Run a Kubernetes cluster locally
+brew "kind"                 # Run a Kubernetes cluster in a Docker
 brew "helm"                 # Kubernetes package manager
-brew "kubernetes-cli"       # Kubernetes command-line interface
+brew "chart-testing"        # Testing and linting Helm charts
 brew "openshift-cli"        # OpenShift command-line interface tools
+brew "kubernetes-cli"       # Kubernetes command-line interface
+brew "krew"                 # Kubernetes package manager
+brew "kubectx"              # Kubernetes context switching
 
 #===================================================
 # Infrastructure tools
@@ -106,13 +111,15 @@ brew "terragrunt"           # Tool to make Terraform configurations DRY
 #===================================================
 cask "1password"            # Password manager
 cask "authy"                # Two-factor authentication software
+cask "bartender"            # Menu bar icon organizer
 cask "cheatsheet"           # Tool to list all application shortcuts
 cask "cleanmymac"           # Tool to remove unnecessary garbage from macOS
+cask "drawio"               # Free diagram software
 cask "forklift"             # Finder replacement and FTP/S, WebDAV and AWS S3 client
 cask "gitkraken"            # UI Git client focusing on productivity
-cask "glance"               # Utility that provides quick look previews for files
 cask "google-chrome"        # Web browser from Google
 cask "iterm2"               # Better terminal emulator
+cask "lens"                 # Kubernetes IDE
 cask "macfuse"              # Integration with additional file systems
 cask "visual-studio-code"   # Open-source Code editor
 cask "zoom"                 # Video communication and virtual meeting platform
