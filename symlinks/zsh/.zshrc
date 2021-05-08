@@ -55,7 +55,6 @@ fi
 
 # Extend PATH.
 path=(~/bin /usr/local/sbin $path)
-fpath=(~/.dotfiles/completions $fpath)
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh

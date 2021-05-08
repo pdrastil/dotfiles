@@ -2,6 +2,12 @@
 source ../lib/setup.sh
 set -o errexit -o nounset
 
+# Use latest version of ZSH from Homebrew
+title "Shell"
+if ! dscl . read "/Users/$USER" UserShell | grep -q '/usr/local/bin/zsh'; then
+  sudo dscl . -create "/Users/$USER" UserShell /usr/local/bin/zsh
+fi
+
 title "Screensaver"
 # Start screensaver after 10 minutes
 defaults -currentHost write com.apple.screensaver idleTime 600

@@ -4,7 +4,6 @@ set -o errexit -o nounset
 export readonly DOTFILES=${1:-"${HOME}/.dotfiles"}
 export readonly DOTFILES_ASSETS="$DOTFILES/assets"
 export readonly DOTFILES_BACKUP="$DOTFILES/backup"
-export readonly DOTFILES_COMPLETIONS="$DOTFILES/completions"
 
 # Colors
 readonly RESET="\033[0m"

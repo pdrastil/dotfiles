@@ -6,5 +6,4 @@ Brewfile.lock.json
 
 # Ignored folders for additonal content
 backup/*
-completions/*
 !**/.gitkeep
