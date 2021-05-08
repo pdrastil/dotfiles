@@ -13,20 +13,20 @@ zstyle ':z4h:'                auto-update-days '28'
 zstyle ':z4h:'                start-tmux       'integrated'
 # Move prompt to the bottom when zsh starts up so that it's always in the
 # same position. Has no effect if start-tmux is 'no'.
-zstyle ':z4h:'                prompt-at-bottom 'yes'
+zstyle ':z4h:'                prompt-at-bottom  'yes'
 # Keyboard type: 'mac' or 'pc'.
-zstyle ':z4h:bindkey'         keyboard 'mac'
+zstyle ':z4h:bindkey'         keyboard          'mac'
 # Right-arrow key accepts one character ('partial-accept') from
 # command autosuggestions or the whole thing ('accept')?
-zstyle ':z4h:autosuggestions' forward-char 'accept'
+zstyle ':z4h:autosuggestions' forward-char      'accept'
 # Enable ('yes') or disable ('no') automatic teleportation of z4h over
 # ssh when connecting to these hosts.
 # example: zstyle ':z4h:ssh:example-hostname1'   enable 'yes'
 # The default value if none of the overrides above match the hostname.
-zstyle ':z4h:ssh:*'           enable 'no'
+zstyle ':z4h:ssh:*'           enable            'no'
 # Send these files over to the remote host when connecting over ssh to the
 # enabled hosts.
-zstyle ':z4h:ssh:*'           send-extra-files '~/.nanorc' '~/.env.zsh'
+zstyle ':z4h:ssh:*'           send-extra-files  '~/.nanorc' '~/.env.zsh'
 
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
 # initialize Zsh. After this point console I/O is unavailable until Zsh
@@ -34,39 +34,81 @@ zstyle ':z4h:ssh:*'           send-extra-files '~/.nanorc' '~/.env.zsh'
 # perform network I/O must be done above. Everything else is best done below.
 z4h init || return
 
-# ---[ Environment ]-------------------------------------------
+# ---[ Path extensions ]------------------------------------
+path=(~/bin /usr/local/sbin $path)
+
+# ---[ Environment ]----------------------------------------
 export LANG=en_US.UTF-8
-export DOTFILES="$HOME/.dotfiles"
+export EDITOR='nvim'
 export GPG_TTY=$TTY
 export GOPATH=$(go env GOPATH)
-export FZF_DEFAULT_COMMAND="fd --type f"
+export FZF_DEFAULT_COMMAND="fd --type file --follow --color=always"
 
-# Default editor for local and remove environments
+if (( $+commands[bat] )); then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
+# Set editor for remote sessions
 if [[ -n "$SSH_CONNECTION" ]]; then
-  # on server
-  if command -v vim >/dev/null 2>&1; then
+  if (( $+commands[vim] )); then
     export EDITOR='vim'
   else
     export EDITOR='vi'
   fi
-else
-  export EDITOR='nvim'
 fi
 
-# Extend PATH.
-path=(~/bin /usr/local/sbin $path)
-
-# Source additional local files if they exist.
+# ---[ Extra source files ]---------------------------------
 z4h source ~/.env.zsh
 
-# Define key bindings.
-z4h bindkey undo           Ctrl+/       # undo the last command line change
-z4h bindkey redo           Alt+/        # redo the last undone command line change
-z4h bindkey z4h-cd-back    Shift+Left   # cd into the previous directory
-z4h bindkey z4h-cd-forward Shift+Right  # cd into the next directory
-z4h bindkey z4h-cd-up      Shift+Up     # cd into the parent directory
-z4h bindkey z4h-cd-down    Shift+Down   # cd into a child directory
+# ---[ Key bindings ]---------------------------------------
+z4h bindkey undo            Ctrl+/       # undo the last command line change
+z4h bindkey redo            Alt+/        # redo the last undone command line change
+z4h bindkey z4h-cd-back     Shift+Left   # cd into the previous directory
+z4h bindkey z4h-cd-forward  Shift+Right  # cd into the next directory
+z4h bindkey z4h-cd-up       Shift+Up     # cd into the parent directory
+z4h bindkey z4h-cd-down     Shift+Down   # cd into a child directory
 
+# ---[ Aliases ]-------------------------------------------
+# Prefer vim with nvim
+if (( $+commands[nvim] )); then
+  alias vim="nvim"
+fi
+
+# Replace ls with exa
+if (( $+commands[exa] )); then
+  alias ls="exa"
+  alias ll="exa -l --git"
+  alias tree="exa --tree"
+  alias gtree="exa -l --tree --git"
+else
+  alias ls="${aliases[ls]:-ls} -A"
+  alias ll="${aliases[ls]:-ls} -lF"
+fi
+
+# Replace cat with bat
+if (( $+commands[bat] )); then
+  alias cat="bat"
+fi
+
+# ---[ Version managers ]----------------------------------
+if (( $+commands[pyenv] )); then
+  function pyenv() {
+    unset -f pyenv
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    pyenv $@
+  }
+fi
+
+if (( $+commands[jenv] )); then
+  function jenv() {
+    unset -F jenv
+    eval $"(jenv init -)"
+    jenv $@
+  }
+fi
+
+# ---[ Functions ]------------------------------------------
 # Autoload functions.
 autoload -Uz zmv
 
@@ -74,22 +116,7 @@ autoload -Uz zmv
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md
 
-# ---[ Aliases ]-------------------------------------------
-if command -v exa >/dev/null; then
-  alias ls="exa"
-  alias ll="exa -l --git"
-  alias tree="exa --tree"
-  alias gtree="exa -l --tree --git"
-else
-  alias tree='tree -a -I .git'
-  alias ls="${aliases[ls]:-ls} -A"
-fi
-
-# Replace cat with bat
-if command -v bat >/dev/null; then
-  alias cat="bat"
-fi
-
+# ---[ Shell options ]--------------------------------------
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 # Reference card: http://lanisolutions.com/wp-content/uploads/2011/05/oh-my-zsh_refcard.pdf
 setopt glob_dots     # no special treatment for file names with a leading dot

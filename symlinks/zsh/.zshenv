@@ -23,8 +23,8 @@ if [ -n "${ZSH_VERSION-}" ]; then
   # Do not change anything else in this file.
 fi
 
-Z4H_URL="https://raw.githubusercontent.com/romkatv/zsh4humans/v5"
-: "${Z4H:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh4humans/v5}"
+Z4H_URL="https://raw.githubusercontent.com/romkatv/zsh4humans/v4"
+: "${Z4H:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh4humans/v4}"
 
 umask o-w
 
