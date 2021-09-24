@@ -5,28 +5,37 @@
 # Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
 
 # Periodic auto-update on Zsh startup: 'ask' or 'no'.
-zstyle ':z4h:'                auto-update      'ask'
+# You can manually run `z4h update` to update everything.
+zstyle ':z4h:' auto-update      'ask'
 # Ask whether to auto-update this often; has no effect if auto-update is 'no'.
-zstyle ':z4h:'                auto-update-days '28'
+zstyle ':z4h:' auto-update-days '28'
+
 # Automaticaly wrap TTY with a transparent tmux ('integrated'), or start a
 # full-fledged tmux ('system'), or disable features that require tmux ('no').
-zstyle ':z4h:'                start-tmux       'integrated'
+zstyle ':z4h:' start-tmux       'integrated'
 # Move prompt to the bottom when zsh starts up so that it's always in the
 # same position. Has no effect if start-tmux is 'no'.
-zstyle ':z4h:'                prompt-at-bottom  'yes'
+zstyle ':z4h:' prompt-at-bottom 'yes'
+
 # Keyboard type: 'mac' or 'pc'.
-zstyle ':z4h:bindkey'         keyboard          'mac'
+zstyle ':z4h:bindkey' keyboard  'mac'
+
 # Right-arrow key accepts one character ('partial-accept') from
 # command autosuggestions or the whole thing ('accept')?
-zstyle ':z4h:autosuggestions' forward-char      'accept'
+zstyle ':z4h:autosuggestions' forward-char 'accept'
+
+# Recursively traverse directories when TAB-completing files.
+zstyle ':z4h:fzf-complete' recurse-dirs 'yes'
+
 # Enable ('yes') or disable ('no') automatic teleportation of z4h over
 # ssh when connecting to these hosts.
 # example: zstyle ':z4h:ssh:example-hostname1'   enable 'yes'
 # The default value if none of the overrides above match the hostname.
-zstyle ':z4h:ssh:*'           enable            'no'
+zstyle ':z4h:ssh:*'           enable 'no'
+
 # Send these files over to the remote host when connecting over ssh to the
 # enabled hosts.
-zstyle ':z4h:ssh:*'           send-extra-files  '~/.nanorc' '~/.env.zsh'
+zstyle ':z4h:ssh:*'           send-extra-files '~/.nanorc' '~/.env.zsh'
 
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
 # initialize Zsh. After this point console I/O is unavailable until Zsh
