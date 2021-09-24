@@ -58,9 +58,9 @@ if ! command -v brew >/dev/null; then
   info 'Installing Homebrew...'
   sudo chown -R "$USER":admin /usr/local/*
   if command -v curl >/dev/null 2>&1; then
-    echo | /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
-    echo | /bin/sh -c "$(wget -O- https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    echo | /bin/bash -c "$(wget -O- https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 fi
 
