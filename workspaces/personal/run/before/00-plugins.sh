@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 set -o errexit -o nounset
-source ../lib/setup.sh
+DOTFILES=${DOTFILES:-"${HOME}/.dotfiles"}
+source "${DOTFILES}/lib/setup.sh"
 
 if brew list --cask | grep -q parallels; then
   title "Parallels Desktop"

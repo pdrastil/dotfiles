@@ -1,58 +1,52 @@
-#!/bin/sh
-source ../lib/setup.sh
+#!/bin/bash
 set -o errexit -o nounset
+DOTFILES=${DOTFILES:-"$HOME/.dotfiles"}
+source "${DOTFILES}/lib/setup.sh"
 
-title "Git configuration"
-if [ ! -f "$HOME/.gitconfig" ]; then
-  cp "$DOTFILES_ASSETS/git/.gitconfig" "$HOME/.gitconfig"
+title "Configuration"
+if ! rsync --specials -uir "${DOTFILES}/static/git/" | grep -E '^>'; then
+  exit 0
 fi
 
-if [ ! -f "$HOME/.gitignore" ]; then
-  cp "$DOTFILES_ASSETS/git/.gitignore" "$HOME/.gitignore"
+title "Name"
+name=$(git config --get user.name || true)
+if [ -z "$name" ] || ask "${YELLOW}Change name?${RESET} (${BOLD}$name${RESET})" N; then
+  echo -n "New name: " && read -r name
+  git config --global user.name "$name"
 fi
 
-title "Git username"
-username=$(git config --get user.name || true)
-if [ -z "$username" ] || ask "${YELLOW}Change Git username?${RESET} (${BOLD}$username${RESET})" N; then
-  printf "Git username: " && read -r username
-  git config --global user.name "$username"
-fi
-
-title "Git e-mail"
+title "E-mail"
 email=$(git config --get user.email || true)
-if [ -z "$email" ] || ask "${YELLOW}Change Git email?${RESET} (${BOLD}$email${RESET})" N; then
-  printf "Git email: " && read -r email
+if [ -z "$email" ] || ask "${YELLOW}Change e-mail?${RESET} (${BOLD}$email${RESET})" N; then
+  echo -n "New e-mail: " && read -r email
   git config --global user.email "$email"
 fi
 
 # https://gist.github.com/bcomnes/647477a3a143774069755d672cb395ca
 # https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
-title "Git commit signing"
+title "Commit signing"
 signing_key=$(git config --get user.signingKey || true)
 if [ -z "$signing_key" ] && ask "${YELLOW}Enable GPG signature?${RESET}" Y; then
   subtitle "Getting GPG key..."
   gpg_key=$(gpg --list-secret-keys --with-colons "$email" 2>/dev/null | awk -F: '$1 == "sec" { print $5 }')
   if [ -z "$gpg_key" ]; then
-    stty -echo
-    printf "New GPG password: " && read -r password
-    stty echo
+    echo -n "New GPG password: " && read -s -r -e password
     echo
 
-    cat > request <<EOF
+    gpg_request=/tmp/gpg_request
+    trap 'rm -f "$gpg_request"' EXIT
+    cat > "$gpg_request" <<EOF
 Key-Type: RSA
-Key-Length: 4098
-Subkey-Type: default
-Name-Real: $username
+Key-Length: 4096
+Name-Real: $name
 Name-Email: $email
 Expire-Date: 0
 Passphrase: $password
 %commit
-%echo
 EOF
 
-    gpg --batch --generate-key request
-    rm -f request
-    unset password gpg_request
+    unset password
+    gpg --batch --generate-key "$gpg_request"
     gpg_key=$(gpg --list-secret-keys --with-colons "$email" | awk -F: '$1 == "sec" { print $5 }')
   fi
 

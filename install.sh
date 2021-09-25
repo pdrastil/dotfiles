@@ -56,13 +56,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 package "Homebrew"
 if ! command -v brew >/dev/null; then
   info 'Installing Homebrew...'
-  sudo chown -R "$USER":admin /usr/local/*
-  if command -v curl >/dev/null 2>&1; then
-    echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  else
-    echo | /bin/bash -c "$(wget -O- https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
+[ -d "/opt/homebrew" ] && HOMEBREW_PREFIX="/opt/homebrew" || HOMEBREW_PREFIX="/usr/local"
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
 package "Zero.sh"
 if ! command -v zero >/dev/null; then
@@ -83,4 +81,4 @@ else
 fi
 
 # Run Zero.sh bootstrap
-caffeinate -i zero setup --directory "$DOTFILES"
+caffeinate -disu -- zero setup default --directory "$DOTFILES"

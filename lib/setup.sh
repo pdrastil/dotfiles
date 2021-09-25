@@ -1,9 +1,5 @@
-#!/bin/sh
-set -o errexit -o nounset
-
-export readonly DOTFILES=${1:-"${HOME}/.dotfiles"}
-export readonly DOTFILES_ASSETS="$DOTFILES/assets"
-export readonly DOTFILES_BACKUP="$DOTFILES/backup"
+#!/bin/bash
+set -o nounset
 
 # Colors
 readonly RESET="\033[0m"
@@ -15,27 +11,27 @@ readonly GREEN="\033[0;92m"
 
 # Prompt functions
 info() {
-  echo "${CYAN}${*}${RESET}"
+  echo -e "${CYAN}${*}${RESET}"
 }
 
 warn() {
-  echo "${YELLOW}${*}${RESET}"
+  echo -e "${YELLOW}${*}${RESET}"
 }
 
 error() {
-  echo "${RED}${*}${RESET}"
+  echo -e "${RED}${*}${RESET}"
 }
 
 success() {
-  echo "${GREEN}${*}${RESET}"
+  echo -e "${GREEN}${*}${RESET}"
 }
 
 title() {
-  echo "${CYAN}==>${RESET} ${BOLD}${*}${RESET}"
+  echo -e "${GREEN}==>${RESET} ${BOLD}${*}${RESET}"
 }
 
 subtitle() {
-  echo "${YELLOW}==>${RESET} ${*}"
+  echo -e "${CYAN}==>${RESET} ${*}"
 }
 
 download() {
@@ -46,18 +42,18 @@ download() {
   fi
 }
 
-ask() {
-  msg=$1
+function ask() {
+  msg=${1:-""}
   default=${2:-"Y"}
 
   if [ "$default" = "Y" ]; then
-    prompt="${GREEN}y${RESET}/N"
+    dialog="${GREEN}y${RESET}/N"
   else
-    prompt="y/${GREEN}N${RESET}"
+    dialog="y/${GREEN}N${RESET}"
   fi
 
   while true; do
-    printf "${msg} [${prompt}]: " && read -r answer
+    printf '%b [%b]: ' "$msg" "$dialog" && read -er answer
     if [ -z "$answer" ]; then
       answer="$default"
     fi

@@ -109,14 +109,6 @@ if (( $+commands[pyenv] )); then
   }
 fi
 
-if (( $+commands[jenv] )); then
-  function jenv() {
-    unset -F jenv
-    eval $"(jenv init -)"
-    jenv $@
-  }
-fi
-
 # ---[ Functions ]------------------------------------------
 # Autoload functions.
 autoload -Uz zmv

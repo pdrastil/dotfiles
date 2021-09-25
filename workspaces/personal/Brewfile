@@ -1,0 +1,21 @@
+#===================================================
+# Homebrew arguments
+#===================================================
+cask_args "no-quarantine": true
+
+#===================================================
+# Apple Store
+#===================================================
+mas "Infuse", id: 1136220934
+mas "WhatsApp", id: 1147396723
+
+#===================================================
+# Desktop applications
+#===================================================
+cask "cleanmymac"           # Tool to remove unnecessary garbage from macOS
+cask "dropbox"              # Client for the Dropbox cloud storage service
+cask "folx"                 # Download manager with a torrent client
+cask "nordvpn"              # VPN client for secure internet access and private browsing
+cask "parallels"            # Parallels Desktop
+cask "vagrant"              # Reusable development environment
+cask "vagrant-manager"      # Manager for Vagrant machines
