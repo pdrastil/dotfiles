@@ -1,6 +1,7 @@
-
-if isdirectory('/usr/local/opt/fzf')
+if filereadable('/usr/local/opt/fzf')
   set rtp+=/usr/local/opt/fzf
+elseif filereadable('/opt/homebrew/opt/fzf')
+  set rtp+=/opt/homebrew/opt/fzf
 endif
 
 let g:nvim_config_files = [

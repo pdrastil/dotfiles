@@ -4,17 +4,15 @@
 scriptencoding utf-8
 
 " ---[ Plugin manager ]----------------------------------------
-let vim_plug_path = stdpath('data') . '/site/autoload/plug.vim'
-if !filereadable(vim_plug_path)
-  execute 'silent! curl -fLo ' . vim_plug_path . ' --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs '.
+    \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-unlet vim_plug_path
 
 " ---[ Plugin install ]----------------------------------------
-call plug#begin(stdpath('data') . '/plugged')
+call plug#begin(data_dir)
   " ---[ Git integration ]------------------------------------{{{
     " A Git wrapper so awesome, it should be illegal
     Plug 'tpope/vim-fugitive'

@@ -84,26 +84,17 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Specify a directory for plugins
-" Avoid using standard Vim directory names like 'plugin'
-if has('nvim')
-  let vimplugdir='~/.config/nvim/plugged'
-  let vimautoloaddir='~/.config/nvim/autoload'
-else
-  let vimplugdir='~/.vim/plugged'
-  let vimautoloaddir='~/.vim/autoload'
-endif
-
 " Install plugin manager {{{
-  if empty(glob(vimautoloaddir . '/plug.vim'))
-    execute 'silent !curl -fLo ' . vimautoloaddir . '/plug.vim --create-dirs ' .
-      \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  endif
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs '.
+    \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 "}}}
 
 " Install plugins
-call plug#begin(vimplugdir)
+call plug#begin(data_dir)
 
   " Sensible VIM defaults
   if !has('nvim')
@@ -230,7 +221,11 @@ call plug#begin(vimplugdir)
 
   " Fuzzy file search {{{
     if executable('fzf')
-      Plug '/usr/local/opt/fzf'
+      if filereadable('/usr/local/opt/fzf')
+        Plug '/usr/local/opt/fzf'
+      elseif filereadable('/opt/homebrew/opt/fzf')
+        Plug '/opt/homebrew/opt/fzf'
+      end
       Plug 'junegunn/fzf.vim'
       let g:fzf_layout = { 'down': '40%' }
     endif
