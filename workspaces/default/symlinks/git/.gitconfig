@@ -1,6 +1,15 @@
 [user]
 	name = Petr Drastil
 	email = petr.drastil@gmail.com
+	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0fmoFoNJsZrKu3g2De9khaWfcVc44BKrDE83ElcT/g
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	# htps://developer.1password.com/docs/ssh/git-commit-signing/
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+	allowedSignersFile = ~/.config/git/allowed_signers
 
 [alias]
 	# Switch branch, creating it if necessary
@@ -133,10 +142,10 @@
 
 [commit]
 	# https://help.github.com/articles/signing-commits-using-gpg
-	gpgSign = false
+	gpgSign = true
 
 [tag]
-	forceSignAnnotated = false
+	forceSignAnnotated = true
 
 [diff]
 	# Detect copies as well as renames
