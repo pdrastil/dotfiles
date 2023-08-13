@@ -20,6 +20,7 @@ dockutil --remove all --no-restart
 dockutil --add "/Applications/ForkLift.app" --no-restart
 dockutil --add "/Applications/Safari.app" --no-restart
 dockutil --add "/Applications/Google Chrome.app" --no-restart
+dockutil --add "/Applications/Things3.app" --no-restart
 dockutil --add "/System/Applications/Notes.app" --no-restart
 dockutil --add "/Applications/Visual Studio Code.app" --no-restart
 dockutil --add "/Applications/GitKraken.app" --no-restart
