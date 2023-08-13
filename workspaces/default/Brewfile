@@ -95,7 +95,6 @@ brew "kind"                 # Run a Kubernetes cluster in a Docker
 brew "helm"                 # Kubernetes package manager
 brew "kustomize"            # Customization of Kubernetes YAML manifests
 brew "chart-testing"        # Testing and linting Helm charts
-brew "openshift-cli"        # OpenShift command-line interface tools
 brew "kubernetes-cli"       # Kubernetes command-line interface
 brew "krew"                 # Kubernetes package manager
 brew "kubectx"              # Kubernetes context switching
