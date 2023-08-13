@@ -15,7 +15,7 @@ mas "WhatsApp", id: 1147396723
 cask "cleanmymac"           # Tool to remove unnecessary garbage from macOS
 cask "dropbox"              # Client for the Dropbox cloud storage service
 cask "folx"                 # Download manager with a torrent client
+cask "little-snitch"        # Host-based application firewall
 cask "nordvpn"              # VPN client for secure internet access and private browsing
 cask "parallels"            # Parallels Desktop
-cask "vagrant"              # Reusable development environment
-cask "vagrant-manager"      # Manager for Vagrant machines
+cask "teamviewer"           # Remote access and connectivity software focused on security
