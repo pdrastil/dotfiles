@@ -27,7 +27,7 @@ dockutil --add "/Applications/iTerm.app" --no-restart
 dockutil --add "/Applications/Slack.app" --no-restart
 dockutil --add "/Applications/Microsoft Outlook.app" --no-restart
 dockutil --add "/Applications/Authy Desktop.app" --no-restart
-dockutil --add "/System/Applications/System Preferences.app" --no-restart
+dockutil --add "/System/Applications/System Settings.app" --no-restart
 dockutil --add "~/Downloads" --display folder --allhomes --no-restart
 
 title "Restart OSX applications"
