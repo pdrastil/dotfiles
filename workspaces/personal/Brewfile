@@ -18,4 +18,5 @@ cask "folx"                 # Download manager with a torrent client
 cask "little-snitch"        # Host-based application firewall
 cask "nordvpn"              # VPN client for secure internet access and private browsing
 cask "parallels"            # Parallels Desktop
+cask "parsec"               # Remote desktop with low latency
 cask "teamviewer"           # Remote access and connectivity software focused on security
