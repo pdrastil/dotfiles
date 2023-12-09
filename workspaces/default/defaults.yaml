@@ -15,7 +15,7 @@ NSGlobalDomain:
   # Keyboard > Shortcuts > Use keyboard navigation to move focus between controls
   AppleKeyboardUIMode: 2
   # Trackpad > Scroll direction > Disable
-  com.apple.swipescrolldirection: 0
+  com.apple.swipescrolldirection: false
 
 ###############################################################################
 # Dock and menu bar items                                                     #
