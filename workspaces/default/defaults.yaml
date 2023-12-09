@@ -53,15 +53,14 @@ com.apple.finder:
 ###############################################################################
 # Forklift.app                                                                #
 ###############################################################################
-com.binarynights.ForkLift-3:
-  # Forklift > Preferences > Enable dark mode
-  DarkMode: 1
-  # Forklift > Preferences > Enable ForkLift Mini in the menu bar
-  ForkLiftMiniEnabled: 1
-  # Forklift > Preferences > Treat archives as folders
-  TreatArchivesAsFolders: 1
-  # Forklift > Preferences > Terminal Application > iTerm
+com.binarynights.ForkLift:
+  # Forklift > Preferences > General > Terminal Application
   TerminalApplication: 1
+  # Forklift > Preferences > General > Treat archives as folders
+  treatArchivesAsFolders: 1
+  # ForkLift > Preferences > Themes
+  theme: ForkLift
+
 
 ###############################################################################
 # iTerm2.app                                                                  #
