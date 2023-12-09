@@ -44,7 +44,7 @@ zstyle ':z4h:ssh:*'           send-extra-files '~/.nanorc' '~/.env.zsh'
 z4h init || return
 
 # ---[ Path extensions ]------------------------------------
-path=(~/bin /usr/local/sbin $path)
+path=(~/bin ~/.krew/bin /usr/local/sbin $path)
 
 # ---[ Environment ]----------------------------------------
 export LANG=en_US.UTF-8
