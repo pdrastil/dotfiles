@@ -10,6 +10,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
 tap "hpedrorodrigues/tools"
+tap "go-task/tap"
 tap "zero-sh/tap"
 
 #===================================================
@@ -61,6 +62,7 @@ brew "git"                  # Distributed revision control system
 brew "git-delta"            # Syntax highlighting pager for git and diff output
 brew "git-flow"             # Extensions to follow Vincent Driessen's branching model
 brew "git-lfs"              # Git extension for versioning large files
+brew "pre-commit"           # Framework for managing multi-language pre-commit hooks
 
 #===================================================
 # Programming languages
@@ -70,6 +72,7 @@ brew "delve"                # Golang debugger
 brew "kubebuilder"          # SDK for building Kubernetes APIs
 brew "pyenv"                # Python version management
 brew "pyenv-virtualenv"     # Pyenv plugin to manage virtualenv
+brew "task"                 # Task is a task runner/build tool that aims to be simpler and easier to use
 brew "shellcheck"           # Static analysis and lint tool, for (ba)sh scripts
 brew "yamllint"             # Linter for YAML files
 
@@ -100,9 +103,8 @@ brew "kubectx"              # Kubernetes context switching
 #===================================================
 # Infrastructure tools
 #===================================================
-brew "packer"               # Tool for creating identical machine images for multiple platforms
-brew "vault"                # Secures, stores and tightly controls access to secrets
 brew "terraform"            # Tool to build, change, and version infrastructure
+brew "terraform-docs"       # Tool to generate documentation from Terraform modules
 brew "terragrunt"           # Tool to make Terraform configurations DRY
 
 #===================================================
