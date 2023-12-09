@@ -119,7 +119,6 @@ cask "quicklook-json"       # Renders json files
 #===================================================
 cask "1password"            # Password manager
 cask "1password-cli"        # 1Password CLI
-cask "authy"                # Two-factor authentication software
 cask "adobe-acrobat-reader" # PDF reader
 cask "bartender"            # Menu bar icon organizer
 cask "cheatsheet"           # Tool to list all application shortcuts
