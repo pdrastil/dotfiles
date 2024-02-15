@@ -9,7 +9,6 @@ cask_args "no-quarantine": true
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
-tap "hpedrorodrigues/tools"
 tap "go-task/tap"
 tap "zero-sh/tap"
 
@@ -25,7 +24,7 @@ mas "Slack", id: 803453959
 #===================================================
 # OSX utilities & drivers
 #===================================================
-cask "dockutil"             # Tool for managing dock items
+brew "dockutil"             # Tool for managing dock items
 cask "font-fira-code"       # Fira Code font
 cask "logitech-options"     # Software for Logitech devices
 
