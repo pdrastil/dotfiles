@@ -83,12 +83,12 @@ if (( $+commands[nvim] )); then
   alias vim="nvim"
 fi
 
-# Replace ls with exa
-if (( $+commands[exa] )); then
-  alias ls="exa"
-  alias ll="exa -l --git"
-  alias tree="exa --tree"
-  alias gtree="exa -l --tree --git"
+# Replace ls with eza
+if (( $+commands[eza] )); then
+  alias ls="eza"
+  alias ll="eza -l --git"
+  alias tree="eza --tree"
+  alias gtree="eza -l --tree --git"
 else
   alias ls="${aliases[ls]:-ls} -A"
   alias ll="${aliases[ls]:-ls} -lF"

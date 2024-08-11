@@ -42,14 +42,14 @@ brew "editorconfig"         # Maintain consistent coding style between multiple 
 brew "gettext"              # GNU internationalization (i18n) and localization (l10n) library
 brew "less"                 # Pager program similar to more
 brew "bat"                  # Clone of cat(1) with syntax highlighting and Git integration
-brew "exa"                  # Modern replacement for 'ls'
+brew "eza"                  # Modern replacement for 'ls'
 brew "fd"                   # Simple, fast and user-friendly alternative to find
 brew "ripgrep"              # Search tool like grep and The Silver Searcher
 brew "jq"                   # Lightweight and flexible command-line JSON processor
 brew "yq"                   # Process YAML documents from the CLI
 brew "pstree"               # Show ps output as a tree
 brew "rsync"                # Utility that provides fast incremental file transfer
-brew "dog"                  # Command-line DNS clinent
+brew "doggo"                # Command-line DNS client for humans
 brew "httpie"               # User-friendly cURL for API era
 brew "wget"                 # Internet file retriever
 
