@@ -1,7 +1,7 @@
 [user]
 	name = Petr Drastil
 	email = petr.drastil@gmail.com
-	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0fmoFoNJsZrKu3g2De9khaWfcVc44BKrDE83ElcT/g
+	signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC0fmoFoNJsZrKu3g2De9khaWfcVc44BKrDE83ElcT/g
 
 [gpg]
 	format = ssh
