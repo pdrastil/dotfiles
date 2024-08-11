@@ -7,7 +7,6 @@ cask_args "no-quarantine": true
 # Extra repositories
 #===================================================
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "homebrew/command-not-found"
 tap "go-task/tap"
 tap "zero-sh/tap"
